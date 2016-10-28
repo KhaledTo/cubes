@@ -78,7 +78,7 @@ After you've cloned, you might want to install all of the development dependenci
 
     pip install -e .[dev]
 
-Build the documentation like so. ::
+Build the documentation like so:
 
     cd doc
     make help
@@ -99,6 +99,29 @@ certain parts of cubes are being used.
   backend
 * Flask from http://flask.pocoo.org/ for Slicer server
 * Jinja2 from http://jinja.pocoo.org/docs/ for HTML presenters
+
+
+Hello World!
+============
+
+Go to the `examples/hello_world folder`:
+
+    git clone git://github.com/DataBrewery/cubes.git
+    cd cubes
+    cd examples/hello_world
+
+Prepare data and run the OLAP server:
+
+    python prepare_data.py
+    slicer serve slicer.ini
+
+And try to do some queries:
+
+    curl "http://localhost:5000/cube/irbd_balance/aggregate"
+    curl "http://localhost:5000/cube/irbd_balance/aggregate?drilldown=year"
+    curl "http://localhost:5000/cube/irbd_balance/aggregate?drilldown=item"
+    curl "http://localhost:5000/cube/irbd_balance/aggregate?drilldown=item&cut=item:e"
+
 
 Support
 =======
